@@ -3,8 +3,14 @@
 @tailwind utilities;
 
 
-@layer
-
+@layer base{
+  h1{
+    @apply font-bold text-3xl;
+  }
+  a{
+    @apply underline font-bold;
+  }
+}
 
 
 
