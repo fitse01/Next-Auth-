@@ -18,6 +18,13 @@ export async function POST() {
             return NextResponse.json({Error :"Duplicate Email " } , {status:409});
         }
 
+        // hash the password 
+        const hashPassword = await bcrypt.hash(userData.password , 10);
+        userData.password = hashPassword;
+
+        await User.create(userData);
+        return NextResponse.json({Error :"User created." } , {status:201});
+
     } catch (err) {
         console.log(err);
         return NextResponse.json({Error :"Error" , err} , {status:500});
