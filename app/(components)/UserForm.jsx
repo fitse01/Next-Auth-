@@ -74,7 +74,16 @@ const UserForm = () => {
             value={formData.password}
             className ="m-2 bg-slate-400 rounded"
         />
-
+        <lable>USER nAME</lable>
+        <input 
+            id="password" 
+            name="password" 
+            type ="password"
+            onChange ={handleChange}
+            required = {true}
+            value={formData.password}
+            className ="m-2 bg-slate-400 rounded"
+        />
         <input type="submit" value="Create User" className="bg-blue-300 hover:bg-blue-100" />
       </form>
         
