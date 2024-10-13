@@ -1,6 +1,6 @@
 import mongoose ,{Schema} from "mongoose";
 import { stringify } from "postcss";
-mongoose.connect(prosses.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI);
 mongoose.Promise = global.Promise
 
 const userSchema = new Schema({

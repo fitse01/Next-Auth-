@@ -21,14 +21,14 @@ const UserForm = () => {
     e.preventDefault();
     setErrorMessage("");
     const res = await fetch("/api/Users", {
-      method: POST,
+      method: "POST",
       body: JSON.stringify({ formData }),
-      "content-type": "application/json",
+      "Content-Type": "application/json",
     });
 
     if (!res.ok) {
       const response = await res.json();
-      setErrorMessage(response);
+      setErrorMessage(response.error || "Something went wrong"); // Extract specific error message
     } else {
       router.refresh();
       router.push("/");
@@ -74,20 +74,12 @@ const UserForm = () => {
             value={formData.password}
             className ="m-2 bg-slate-400 rounded"
         />
-        <lable>USER nAME</lable>
-        <input 
-            id="password" 
-            name="password" 
-            type ="password"
-            onChange ={handleChange}
-            required = {true}
-            value={formData.password}
-            className ="m-2 bg-slate-400 rounded"
-        />
+        
         <input type="submit" value="Create User" className="bg-blue-300 hover:bg-blue-100" />
       </form>
         
-        <p className="text-red-400">{errorMessage}</p>
+      <p className="text-red-400">{typeof errorMessage === 'string' ? errorMessage : "An unexpected error occurred"}</p>
+
     </>
   );
 };
